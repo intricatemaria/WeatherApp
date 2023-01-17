@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.firstjetpackapp.screens.MainScreen
 import com.example.firstjetpackapp.ui.theme.FirstJetpackAppTheme
 import org.json.JSONObject
 
@@ -30,13 +31,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             FirstJetpackAppTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Irkutsk", this)
-                }
+                MainScreen()
+//                Surface(
+//                    modifier = Modifier.fillMaxSize(),
+//                    color = MaterialTheme.colors.background
+//                ) {
+//                    Greeting("Irkutsk", this)
+//                }
             }
         }
     }
@@ -48,20 +49,23 @@ fun Greeting(name: String, context: Context) {
         mutableStateOf("Unknown")
     }
     Column(modifier = Modifier.fillMaxSize()) {
-        Box(modifier = Modifier.fillMaxHeight(0.5f)
+        Box(modifier = Modifier
+            .fillMaxHeight(0.5f)
             .fillMaxWidth(),
             contentAlignment = Alignment.Center
 
         ){
             Text(text = "Temp in $name = ${state.value}")
         }
-        Box(modifier = Modifier.fillMaxHeight()
+        Box(modifier = Modifier
+            .fillMaxHeight()
             .fillMaxWidth(),
             contentAlignment = Alignment.BottomCenter
         ){
             Button(onClick = {
                 getResult(name, state, context)
-            }, modifier = Modifier.padding(5.dp)
+            }, modifier = Modifier
+                .padding(5.dp)
                 .fillMaxWidth()
             ) {
                 Text(text = "Refresh")
